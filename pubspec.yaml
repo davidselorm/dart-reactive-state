@@ -1,0 +1,5 @@
+name: dart_reactive_state
+description: Zero-dependency reactive observable state primitives in Dart.
+version: 1.0.0
+environment:
+  sdk: ">=3.0.0 <4.0.0"
