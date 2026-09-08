@@ -1,10 +1,21 @@
-import "signal.dart";
+import 'signal.dart';
 
 class Computed<T> {
   final T Function() _compute;
   late T _cachedValue;
-  Computed(this._compute) {
-    _cachedValue = _compute();
+  bool _dirty = true;
+
+  Computed(this._compute);
+
+  T get value {
+    if (_dirty) {
+      _cachedValue = _compute();
+      _dirty = false;
+    }
+    return _cachedValue;
   }
-  T get value => _compute();
+
+  void markDirty() {
+    _dirty = true;
+  }
 }
